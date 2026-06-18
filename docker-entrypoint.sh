@@ -1,6 +1,12 @@
 # Create the data directory if it doesn't exist
 mkdir -p /app/data
 
+# Download the Minecraft server JAR file if it doesn't exist
+if [ ! -f /app/server.jar ]; then
+    echo "Downloading the Minecraft server JAR file..."
+    wget -O server.jar https://piston-data.mojang.com/v1/objects/823e2250d24b3ddac457a60c92a6a941943fcd6a/server.jar
+fi
+
 # Agree to the EULA by creating the eula.txt file
 echo "eula=true" > /app/data/eula.txt
 

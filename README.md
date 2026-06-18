@@ -93,10 +93,8 @@ The server image is built using the [Dockerfile](/Dockerfile), which installs pe
     - `bash`: Used to run the entry point script.
 2. Change the working directory to `/app`
     - This is where all files related to the minecraft server are stored.
-3. Download the server.jar file using `wget`.
-    - The file is not included in this repo because using large binary files is not recommended in git.
-4. Copy the [docker entrypoint script](/docker-entrypoint.sh)
-5. Run the entrypoint script when the container is started.
+3. Copy the [docker entrypoint script](/docker-entrypoint.sh)
+4. Run the entrypoint script when the container is started.
 
 ### Entrypoint script
 
@@ -104,11 +102,13 @@ The entrypoint converts the environment variables into files that are readable b
 
 1. Create the `/app/data` directory if it does not exist already.
     - In this directory, all the server data is saved. It should be mounted using volumes in docker compose.
-2. Agree to the EULA by writing to `/app/data/eula.txt`.
-3. Fills the `server.properties` with the configured environment variables (or their default value if they are not set).
-4. Generate the `ops.json` file if it does not exist or overriding is explicitly enabled.
-5. Change the working directory to `/app/data`, so the server saves its files there.
-6. Run the server with the specified memory and port options.
+2. Download the server.jar file using `wget` if it does not exist yet.
+    - The file is not included in this repo because using large binary files is not recommended in git.
+3. Agree to the EULA by writing to `/app/data/eula.txt`.
+4. Fills the `server.properties` with the configured environment variables (or their default value if they are not set).
+5. Generate the `ops.json` file if it does not exist or overriding is explicitly enabled.
+6. Change the working directory to `/app/data`, so the server saves its files there.
+7. Run the server with the specified memory and port options.
 
 ### Docker compose file
 
