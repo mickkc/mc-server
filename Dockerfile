@@ -12,5 +12,8 @@ RUN wget -O server.jar https://piston-data.mojang.com/v1/objects/823e2250d24b3dd
 # Copy the entrypoint script into the container
 COPY docker-entrypoint.sh docker-entrypoint.sh
 
+# Expose the default Minecraft server port (port can still be changed later using environment variables)
+EXPOSE 25565
+
 # Run the entrypoint script when the container starts
 ENTRYPOINT ["bash", "docker-entrypoint.sh"]
