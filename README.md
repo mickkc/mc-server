@@ -22,7 +22,7 @@ A minecraft server configuration using Docker and Docker compose to automaticall
 
 1. Clone this repository
     ```bash
-    git clone https://github.com/mickkc/mc-server
+    git clone git@github.com:mickkc/mc-server.git
     ```
 2. Copy the `example.env` and configure the server to your liking.
     ```bash
